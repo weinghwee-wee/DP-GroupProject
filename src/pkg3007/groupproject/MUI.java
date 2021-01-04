@@ -43,22 +43,27 @@ public class MUI extends javax.swing.JFrame {
     private String op;
     private String str;
     
-    private static MUI uniquedMUI;
+    private volatile static MUI uniquedMUI;
     
-    private MUI() {
+    private MUI() {}
+    
+    public static MUI getMUI() {
+        if (uniquedMUI == null) {
+            synchronized (MUI.class) {
+                if (uniquedMUI == null) {
+                    uniquedMUI = new MUI();
+                }
+            }
+        }
+        return uniquedMUI;
+    }
+    
+    public void initMuiClass(){
         initComponents();
         String[] columnNames = {"S.No", "Name", "Mobile"," Email"};
         DefaultTableModel model = new DefaultTableModel(null, columnNames);
         jXTable1.setModel(model);
         setUpTableData();
-    }
-    
-    public static MUI getMUI() {
-        if (uniquedMUI == null) {
-            uniquedMUI = new MUI();
-        }
-        
-        return uniquedMUI;
     }
     
     public void setMg(MUI mg) {

@@ -23,6 +23,7 @@ public class ContactManagementSoftware implements Serializable{
 
     public static void main(String[] args) {
         mg = MUI.getMUI();
+        mg.initMuiClass();
         rootDir.add(perF1);
         rootDir.add(rel1);
         rootDir.add(proF1);
