@@ -14,20 +14,21 @@ import java.util.ArrayList;
 
 public class ContactManagementSoftware implements Serializable{
     private static MUI mg;
-    private static ArrayList<ArrayList<Acquaintances>> a = new ArrayList<>();
-    private static ArrayList<Acquaintances> perF1 = new ArrayList<>();
-    private static ArrayList<Acquaintances> rel1 = new ArrayList<>();
-    private static ArrayList<Acquaintances> proF1 = new ArrayList<>();
-    private static ArrayList<Acquaintances> ca1 = new ArrayList<>();
+
+    private static AcquaintanceComponent rootDir = new AcquaintanceList("");
+    private static AcquaintanceComponent perF1 = new AcquaintanceList("Personal Friends");
+    private static AcquaintanceComponent rel1 = new AcquaintanceList("Relatives");
+    private static AcquaintanceComponent proF1 = new AcquaintanceList("Professional Friends");
+    private static AcquaintanceComponent ca1 = new AcquaintanceList("Casual Friends");
 
     public static void main(String[] args) {
         mg = MUI.getMUI();
-        a.add(perF1);
-        a.add(rel1);
-        a.add(proF1);
-        a.add(ca1);
+        rootDir.add(perF1);
+        rootDir.add(rel1);
+        rootDir.add(proF1);
+        rootDir.add(ca1);
         mg.setMg(mg);
-        mg.setA(a);
+        mg.setA(rootDir);
         mg.setVisible(true);
     }
 }

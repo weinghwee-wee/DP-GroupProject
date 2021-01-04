@@ -5,7 +5,6 @@ package pkg3007.groupproject;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author WH
@@ -13,30 +12,31 @@ package pkg3007.groupproject;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class Acquaintances implements Serializable{
+public class Acquaintances extends AcquaintanceComponent implements Serializable {
+
     private String Name;
     private String MobileNo;
     private String Email;
     public static int number = 0;
 
-    Acquaintances(){
+    Acquaintances() {
         number++;
     }
 
     public String getName() {
         return Name;
     }
-    
+
     public void setName(String name) {
         Scanner reader = new Scanner(System.in);
-        if(!name.isEmpty())
+        if (!name.isEmpty()) {
             this.Name = name;
-        else{
+        } else {
             System.out.println("Enter atleast one character");
             setName(reader.nextLine());
         }
     }
-    
+
     public String getMobileNo() {
         return MobileNo;
     }
@@ -45,24 +45,24 @@ public class Acquaintances implements Serializable{
         return Email;
     }
 
-    public void setMobileNo(String MobileNo){
+    public void setMobileNo(String MobileNo) {
         Scanner reader = new Scanner(System.in);
         Validator v = new MobileNoChecker(MobileNo);
-        
-        if(v.isValid() && MobileNo.length()>=6 &&
-            MobileNo.length()<=15)
+
+        if (v.isValid() && MobileNo.length() >= 6
+                && MobileNo.length() <= 15) {
             this.MobileNo = MobileNo;
-        else{
+        } else {
             System.out.print("Enter a valid Mobile No of length between 6 and 15 (inclusive): ");
             setMobileNo(reader.next());
         }
     }
 
-    public void setEmail(String Email){
+    public void setEmail(String Email) {
         Scanner reader = new Scanner(System.in);
-        if(Email.contains("@"))
+        if (Email.contains("@")) {
             this.Email = Email;
-        else{
+        } else {
             System.out.print("Enter a valid Email: ");
             this.setEmail(reader.next());
         }

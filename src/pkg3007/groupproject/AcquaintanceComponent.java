@@ -5,24 +5,56 @@
  */
 package pkg3007.groupproject;
 
+import java.io.Serializable;
+
 /**
  *
- * @author WH
+ * @author Wah
  */
-public abstract class AcquaintanceComponent {
-    public void add(AcquaintanceComponent acquaintanceComponent) {
+public abstract class AcquaintanceComponent implements Serializable{
+    
+    public void add(AcquaintanceComponent acquaintanceComponent){
         throw new UnsupportedOperationException();
     }
     
-    public void remove(AcquaintanceComponent acquaintanceComponent) {
+    public void remove(int i){
         throw new UnsupportedOperationException();
     }
     
-    public String getName() {
+    public String getName(){
         throw new UnsupportedOperationException();
     }
     
-    public String print() {
+    public void setName(String name){
         throw new UnsupportedOperationException();
     }
+    
+    public String getMobileNo(){
+        throw new UnsupportedOperationException();
+    }
+    
+    public void setMobileNo(String mobileNo){
+        throw new UnsupportedOperationException();
+    }
+    
+    public String getEmail(){
+        throw new UnsupportedOperationException();
+    }
+    
+    public void setEmail(String email){
+        throw new UnsupportedOperationException();
+    }
+    
+    public AcquaintanceComponent get(int i){
+        throw new UnsupportedOperationException();
+    }
+    
+    public int size(){
+        throw new UnsupportedOperationException();
+    }
+    
+    public String print(){
+        throw new UnsupportedOperationException();
+    }
+    
 }

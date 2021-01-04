@@ -34,8 +34,8 @@ public class MUI extends javax.swing.JFrame {
      * Creates new form MUI
      */
     private MUI mg;
-    private ArrayList<ArrayList<Acquaintances>> a;
-    private ArrayList<ArrayList<Acquaintances>> temp;
+    private AcquaintanceComponent a;
+    private AcquaintanceComponent temp;
     private int x;
     private int num;
     private boolean flag;
@@ -65,7 +65,7 @@ public class MUI extends javax.swing.JFrame {
         this.mg = mg;
     }
 
-    public void setA(ArrayList<ArrayList<Acquaintances>> a) {
+    public void setA(AcquaintanceComponent a) {
         this.a = a;
     }
     
@@ -90,7 +90,7 @@ public class MUI extends javax.swing.JFrame {
             op = "Edit";
         if(!flag){
             jButton10.setText("Save");
-            Acquaintances e = a.get(x).get(num);            
+            AcquaintanceComponent e = a.get(x).get(num);            
             name.setText(e.getName());
             mobile.setText(e.getMobileNo());
             email.setText(e.getEmail());
@@ -195,7 +195,7 @@ public class MUI extends javax.swing.JFrame {
     public final void setUpTableData() {
         DefaultTableModel tableModel = (DefaultTableModel) jXTable1.getModel();
         tableModel.setRowCount(0);
-        ArrayList<Acquaintances> list;
+        AcquaintanceComponent list;
         try{        
             list = a.get(jList1.getSelectedIndex());
         }
@@ -789,9 +789,11 @@ public class MUI extends javax.swing.JFrame {
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             try {
-                temp = (ArrayList<ArrayList<Acquaintances>>)SerializationUtil.deserialize(selectedFile);
+                System.out.println(selectedFile);
+                temp = (AcquaintanceComponent)SerializationUtil.deserialize(selectedFile);
             }
             catch (ClassNotFoundException | IOException e) {
+                System.out.println("why error111");
                 JOptionPane.showMessageDialog(mg, "Error");
                 return;
             }
