@@ -99,7 +99,7 @@ public class MUI extends javax.swing.JFrame {
         else
             op = "Edit";
         if(!flag){
-            jButton10.setText("Save");
+            saveButton.setText("Save");
             AcquaintanceComponent e = a.get(2*acquaintanceType + countryType).get(num);            
             name.setText(e.getName());
             mobile.setText(e.getMobileNo());
@@ -132,45 +132,45 @@ public class MUI extends javax.swing.JFrame {
                     break;
             }
         }
-        jButton10.setVisible(true);
-        jButton11.setVisible(true);
+        saveButton.setVisible(true);
+        cancelButton.setVisible(true);
         if(flag)
-            jButton10.setText("Add");
+            saveButton.setText("Add");
         switch(acquaintanceType){
             case 0:
                 two.setVisible(true);
                 three.setVisible(true);
                 jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, op + " Personal Friends Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16)));
-                jLabel7.setText("Specific Events:");
-                jLabel8.setText("First Acquaintance Context:");
-                jLabel9.setVisible(true);
-                jLabel3.setVisible(true);
-                jLabel8.setVisible(true);
-                jLabel7.setVisible(true);
+                meetingLocationLabel.setText("Specific Events:");
+                meetingCircumstancesLabel.setText("First Acquaintance Context:");
+                otherInfo.setVisible(true);
+                detailsLabel.setVisible(true);
+                meetingCircumstancesLabel.setVisible(true);
+                meetingLocationLabel.setVisible(true);
                 jScrollPane5.setVisible(true);
                 jScrollPane4.setVisible(true);
-                jLabel9.setText("<html>First Acquaintance Date:<br>(dd/mm/yyyy)</html>");
+                otherInfo.setText("<html>First Acquaintance Date:<br>(dd/mm/yyyy)</html>");
                 break;
             case 1:
                 jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, op + " Relatives Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16))); 
-                jLabel7.setText("<html>Relatives Birthday:<br> (dd/mm/yyyy)</html>");
-                jLabel8.setVisible(true);
-                jLabel7.setVisible(true);
+                meetingLocationLabel.setText("<html>Relatives Birthday:<br> (dd/mm/yyyy)</html>");
+                meetingCircumstancesLabel.setVisible(true);
+                meetingLocationLabel.setVisible(true);
                 two.setVisible(true);
-                jLabel8.setText("<html>Last Date met:<br> (dd/mm/yyyy)</html>");
-                jLabel9.setVisible(false);
+                meetingCircumstancesLabel.setText("<html>Last Date met:<br> (dd/mm/yyyy)</html>");
+                otherInfo.setVisible(false);
                 three.setVisible(false);
                 jScrollPane4.setVisible(true);
                 jScrollPane5.setVisible(false);
                 break;
             case 2:
                 jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, op + " Professional Friends Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16))); 
-                jLabel7.setText("Common Interests: ");
-                jLabel7.setVisible(true);
-                jLabel8.setVisible(false);
+                meetingLocationLabel.setText("Common Interests: ");
+                meetingLocationLabel.setVisible(true);
+                meetingCircumstancesLabel.setVisible(false);
                 two.setVisible(false);
                 jScrollPane4.setVisible(false);
-                jLabel9.setVisible(false);
+                otherInfo.setVisible(false);
                 three.setVisible(false);
                 jScrollPane5.setVisible(false);
                 break;
@@ -179,12 +179,12 @@ public class MUI extends javax.swing.JFrame {
                 jScrollPane4.setVisible(true);
                 two.setVisible(true);
                 three.setVisible(true);
-                jLabel7.setVisible(true);
-                jLabel8.setVisible(true);
-                jLabel9.setVisible(true);
-                jLabel7.setText("First meeting time & location:");
-                jLabel8.setText("First meeting CIrcumstances:");
-                jLabel9.setText("Other useful information:");
+                meetingLocationLabel.setVisible(true);
+                meetingCircumstancesLabel.setVisible(true);
+                otherInfo.setVisible(true);
+                meetingLocationLabel.setText("First meeting time & location:");
+                meetingCircumstancesLabel.setText("First meeting CIrcumstances:");
+                otherInfo.setText("Other useful information:");
                 break;
             default:
                 break;
@@ -196,8 +196,8 @@ public class MUI extends javax.swing.JFrame {
             one.setEditable(false);
             two.setEditable(false);
             three.setEditable(false);
-            jButton10.setText("Back to main menu");
-            jButton11.setVisible(false);
+            saveButton.setText("Back to main menu");
+            cancelButton.setVisible(false);
             jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Display Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16)));
         }
     }
@@ -236,92 +236,92 @@ public class MUI extends javax.swing.JFrame {
         provider = new AcquaintancesFactoryProvider();
         jScrollPane7 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        systemTitleLabel = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
+        searchexitexitButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jList2 = new javax.swing.JList();
+        acquantanceTypeList = new javax.swing.JList();
+        countryTypeList = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        selectCategoryLabel = new javax.swing.JLabel();
+        detailsLabel = new javax.swing.JLabel();
+        editButton = new javax.swing.JButton();
+        viewFullDetails = new javax.swing.JButton();
+        readFileButton = new javax.swing.JButton();
+        saveFileButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         details = new javax.swing.JTextPane();
-        jButton9 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        mobileNoLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        meetingLocationLabel = new javax.swing.JLabel();
+        meetingCircumstancesLabel = new javax.swing.JLabel();
+        otherInfo = new javax.swing.JLabel();
+        countryLabel = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         two = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
         three = new javax.swing.JTextArea();
-        jButton10 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         mobile = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         one = new javax.swing.JTextArea();
-        jButton11 = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu Medium", 0, 20)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("<html><u>Contact Management System</u></html>");
+        systemTitleLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 20)); // NOI18N
+        systemTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        systemTitleLabel.setText("<html><u>Contact Management System</u></html>");
 
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Delete");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Search");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Exit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        searchexitexitButton.setText("Exit");
+        searchexitexitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        acquantanceTypeList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Personal Friends", "Relatives", "Professional Friends", "Casual Acquaintances" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        acquantanceTypeList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jList1ValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(acquantanceTypeList);
 
         jXTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -357,47 +357,47 @@ public class MUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jXTable1);
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
-        jLabel1.setText("Select Category:");
+        selectCategoryLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
+        selectCategoryLabel.setText("Select Category:");
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
-        jLabel3.setText("Details:");
+        detailsLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
+        detailsLabel.setText("Details:");
 
-        jButton5.setText("Edit");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("View full detail");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        viewFullDetails.setText("View full detail");
+        viewFullDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Read from file");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        readFileButton.setText("Read from file");
+        readFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                readFileButtonActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Save as file");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        saveFileButton.setText("Save as file");
+        saveFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                saveFileButtonActionPerformed(evt);
             }
         });
         
-        jList2.setModel(new javax.swing.AbstractListModel() {
+        countryTypeList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Oversea", "Local" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
         
-        jList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        countryTypeList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 jList2ValueChanged(evt);
             }
@@ -410,7 +410,7 @@ public class MUI extends javax.swing.JFrame {
         });
         
         
-        jScrollPane7.setViewportView(jList2);
+        jScrollPane7.setViewportView(countryTypeList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -419,11 +419,11 @@ public class MUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(systemTitleLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(selectCategoryLabel)
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel3)
+                        .addComponent(detailsLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -435,55 +435,55 @@ public class MUI extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton6)
+                                        .addComponent(viewFullDetails)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton7))
+                                        .addComponent(readFileButton))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton8)
+                                        .addComponent(saveFileButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(searchexitexitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addButton, deleteButton, searchButton, searchexitexitButton, editButton, viewFullDetails, readFileButton, saveFileButton});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(systemTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
-                        .addComponent(jButton1))
+                        .addComponent(deleteButton)
+                        .addComponent(addButton))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
-                        .addComponent(jButton5)))
+                        .addComponent(searchButton)
+                        .addComponent(editButton)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4)
-                        .addComponent(jButton8))
+                        .addComponent(searchexitexitButton)
+                        .addComponent(saveFileButton))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton6)
-                        .addComponent(jButton7)))
+                        .addComponent(viewFullDetails)
+                        .addComponent(readFileButton)))
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                    .addComponent(selectCategoryLabel)
+                    .addComponent(detailsLabel))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -499,10 +499,10 @@ public class MUI extends javax.swing.JFrame {
         details.setEditable(false);
         jScrollPane3.setViewportView(details);
 
-        jButton9.setText("Back to main menu");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Back to main menu");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -516,7 +516,7 @@ public class MUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(194, 194, 194)
-                .addComponent(jButton9)
+                .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -525,7 +525,7 @@ public class MUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton9)
+                .addComponent(backButton)
                 .addGap(21, 21, 21))
         );
 
@@ -533,19 +533,19 @@ public class MUI extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Casual Acquaintance Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16))); // NOI18N
 
-        jLabel4.setText("Name:");
+        nameLabel.setText("Name:");
 
-        jLabel5.setText("Mobile No:");
+        mobileNoLabel.setText("Mobile No:");
         
-        jLabel6.setText("Email:");
+        emailLabel.setText("Email:");
 
-        jLabel7.setText("First meeting time & location:");
+        meetingLocationLabel.setText("First meeting time & location:");
 
-        jLabel8.setText("First meeting CIrcumstances:");
+        meetingCircumstancesLabel.setText("First meeting CIrcumstances:");
 
-        jLabel9.setText("Other useful information:");
+        otherInfo.setText("Other useful information:");
         
-        jLabel10.setText("Country:");
+        countryLabel.setText("Country:");
 
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -562,10 +562,10 @@ public class MUI extends javax.swing.JFrame {
         three.setRows(5);
         jScrollPane5.setViewportView(three);
 
-        jButton10.setText("Add");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setText("Add");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -573,10 +573,10 @@ public class MUI extends javax.swing.JFrame {
         one.setRows(5);
         jScrollPane6.setViewportView(one);
 
-        jButton11.setText("Cancel");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
@@ -587,13 +587,13 @@ public class MUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel10))
+                    .addComponent(otherInfo)
+                    .addComponent(meetingCircumstancesLabel)
+                    .addComponent(meetingLocationLabel)
+                    .addComponent(emailLabel)
+                    .addComponent(mobileNoLabel)
+                    .addComponent(nameLabel)
+                    .addComponent(countryLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -603,9 +603,9 @@ public class MUI extends javax.swing.JFrame {
                     .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                        .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                         .addGap(132, 132, 132))
                     .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -615,39 +615,39 @@ public class MUI extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(nameLabel)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
+                    .addComponent(mobileNoLabel)
                     .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(emailLabel)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(countryLabel)
                     .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
+                    .addComponent(meetingLocationLabel)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel8))
+                        .addComponent(meetingCircumstancesLabel))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(otherInfo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11))
+                    .addComponent(saveButton)
+                    .addComponent(cancelButton))
                 .addGap(3, 3, 3))
         );
 
@@ -657,8 +657,8 @@ public class MUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int index = jList1.getSelectedIndex();
-        if(index<0 || jList2.getSelectedIndex() < 0){
+        int index = acquantanceTypeList.getSelectedIndex();
+        if(index<0 || countryTypeList.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -669,9 +669,9 @@ public class MUI extends javax.swing.JFrame {
         setDescription();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int index = jList1.getSelectedIndex();
-        if(index<0 || jList2.getSelectedIndex() < 0){
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int index = acquantanceTypeList.getSelectedIndex();
+        if(index<0 || countryTypeList.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -690,7 +690,7 @@ public class MUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(mg, "Successfully Deleted");
             mg.setUpTableData();
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String s = (String)JOptionPane.showInputDialog(
@@ -715,13 +715,13 @@ public class MUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        acquaintanceType = jList1.getSelectedIndex();
+        acquaintanceType = acquantanceTypeList.getSelectedIndex();
         setUpTableData();
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int index = jList1.getSelectedIndex();
-        if(index<0 || jList2.getSelectedIndex() < 0){
+        int index = acquantanceTypeList.getSelectedIndex();
+        if(index<0 || countryTypeList.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -744,8 +744,8 @@ public class MUI extends javax.swing.JFrame {
     }   
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        int index = jList1.getSelectedIndex();
-        if(index<0 || jList2.getSelectedIndex() < 0){
+        int index = acquantanceTypeList.getSelectedIndex();
+        if(index<0 || countryTypeList.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -764,8 +764,8 @@ public class MUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
     
     private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {                                    
-        countryType = jList2.getSelectedIndex();
-        factory = provider.getAcquaintanceFactory(jList2.getSelectedIndex());
+        countryType = countryTypeList.getSelectedIndex();
+        factory = provider.getAcquaintanceFactory(countryTypeList.getSelectedIndex());
         setUpTableData();
         
         if (countryType == 0) {
@@ -884,7 +884,7 @@ public class MUI extends javax.swing.JFrame {
         details.setText(s);
     }
     
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void readFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readFileButtonActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
         int result = fileChooser.showOpenDialog(this);
@@ -914,9 +914,9 @@ public class MUI extends javax.swing.JFrame {
 
         }
         mg.setUpTableData();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_readFileButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void saveFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveFileButtonActionPerformed
         String s = (String)JOptionPane.showInputDialog(
             mg,
             "Enter file name: (*.ser)",
@@ -949,18 +949,18 @@ public class MUI extends javax.swing.JFrame {
             return;
         }
         JOptionPane.showMessageDialog(mg, s + " saved successfully");
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_saveFileButtonActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         factory = provider.getAcquaintanceFactory(countryType);
         dflag = true;
         String Name = name.getText();
@@ -1100,12 +1100,12 @@ public class MUI extends javax.swing.JFrame {
         jPanel1.setVisible(true);
         jPanel3.setVisible(false);
         mg.setUpTableData();
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_saveButtonActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         jPanel1.setVisible(true);
         jPanel3.setVisible(false);
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1145,29 +1145,29 @@ public class MUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane details;
     private javax.swing.JTextField email;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JButton searchexitexitButton;
+    private javax.swing.JButton editButton;
+    private javax.swing.JButton viewFullDetails;
+    private javax.swing.JButton readFileButton;
+    private javax.swing.JButton saveFileButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel selectCategoryLabel;
+    private javax.swing.JLabel systemTitleLabel;
+    private javax.swing.JLabel detailsLabel;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel mobileNoLabel;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel meetingLocationLabel;
+    private javax.swing.JLabel meetingCircumstancesLabel;
+    private javax.swing.JLabel otherInfo;
+    private javax.swing.JLabel countryLabel;
+    private javax.swing.JList acquantanceTypeList;
+    private javax.swing.JList countryTypeList;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
