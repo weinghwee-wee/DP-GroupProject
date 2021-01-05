@@ -100,7 +100,7 @@ public class MUI extends javax.swing.JFrame {
             op = "Edit";
         if(!flag){
             jButton10.setText("Save");
-            AcquaintanceComponent e = a.get(acquaintanceType + countryType).get(num);            
+            AcquaintanceComponent e = a.get(2*acquaintanceType + countryType).get(num);            
             name.setText(e.getName());
             mobile.setText(e.getMobileNo());
             email.setText(e.getEmail());
@@ -207,7 +207,7 @@ public class MUI extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         AcquaintanceComponent list;
         try{        
-            list = a.get(jList1.getSelectedIndex() + countryType);
+            list = a.get(2*acquaintanceType + countryType);
         }
         catch(Exception e){
             return;
@@ -686,7 +686,7 @@ public class MUI extends javax.swing.JFrame {
             "Confirm",
             JOptionPane.YES_NO_OPTION);
         if(n==0){
-            a.get(index + countryType).remove(tindex);
+            a.get(2*acquaintanceType + countryType).remove(tindex);
             JOptionPane.showMessageDialog(mg, "Successfully Deleted");
             mg.setUpTableData();
         }
@@ -817,6 +817,54 @@ public class MUI extends javax.swing.JFrame {
         }
         j = 0;
         for(int i = 0; i < a.get(3).size(); i++){
+            if(a.get(3).get(i).getName().matches(str)){
+                j++;
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                if(j==1){
+                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                }
+                s = s.concat(j + ". " + ca.print());
+                s = s.concat("<br>");
+            }
+        }
+        j = 0;
+        for(int i = 0; i < a.get(4).size(); i++){
+            if(a.get(3).get(i).getName().matches(str)){
+                j++;
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                if(j==1){
+                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                }
+                s = s.concat(j + ". " + ca.print());
+                s = s.concat("<br>");
+            }
+        }
+        j = 0;
+        for(int i = 0; i < a.get(5).size(); i++){
+            if(a.get(3).get(i).getName().matches(str)){
+                j++;
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                if(j==1){
+                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                }
+                s = s.concat(j + ". " + ca.print());
+                s = s.concat("<br>");
+            }
+        }
+        j = 0;
+        for(int i = 0; i < a.get(6).size(); i++){
+            if(a.get(3).get(i).getName().matches(str)){
+                j++;
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                if(j==1){
+                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                }
+                s = s.concat(j + ". " + ca.print());
+                s = s.concat("<br>");
+            }
+        }
+        j = 0;
+        for(int i = 0; i < a.get(7).size(); i++){
             if(a.get(3).get(i).getName().matches(str)){
                 j++;
                 AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
@@ -959,7 +1007,7 @@ public class MUI extends javax.swing.JFrame {
                 if(flag)
                     perF = (PersonalFriends) factory.getAcquaintance(acquaintanceType);
                 else
-                    perF = (PersonalFriends)a.get(acquaintanceType + countryType).get(num);
+                    perF = (PersonalFriends)a.get(2*acquaintanceType + countryType).get(num);
                 perF.setName(Name);
                 perF.updateCountry(countryValue);
                 perF.setMobileNo(Mobile);
@@ -968,7 +1016,7 @@ public class MUI extends javax.swing.JFrame {
                 perF.setAContext(Two);
                 perF.setADate(Three);
                 if(flag)
-                    a.get(acquaintanceType + countryType).add(perF);
+                    a.get(2*acquaintanceType + countryType).add(perF);
                     //this.a.get(x).add(perF);
                 break;
             case 1: //rel
@@ -986,7 +1034,7 @@ public class MUI extends javax.swing.JFrame {
                 if(flag)
                     rel = (Relatives)factory.getAcquaintance(acquaintanceType);
                 else
-                    rel = (Relatives)a.get(acquaintanceType + countryType).get(num);
+                    rel = (Relatives)a.get(2*acquaintanceType + countryType).get(num);
                 rel.setName(Name);
                 rel.setMobileNo(Mobile);
                 rel.updateCountry(countryValue);
@@ -994,7 +1042,7 @@ public class MUI extends javax.swing.JFrame {
                 rel.setBDate(One);
                 rel.setLDate(Two);
                 if(flag)
-                    a.get(acquaintanceType + countryType).add(rel);
+                    a.get(2*acquaintanceType + countryType).add(rel);
                 break;
             case 2: //proF
                 One = one.getText();
@@ -1006,14 +1054,14 @@ public class MUI extends javax.swing.JFrame {
                 if(flag)
                     proF = (ProfessionalFriends)factory.getAcquaintance(acquaintanceType);
                 else
-                    proF = (ProfessionalFriends)a.get(acquaintanceType + countryType).get(num);
+                    proF = (ProfessionalFriends)a.get(2*acquaintanceType + countryType).get(num);
                 proF.setName(Name);
                 proF.setMobileNo(Mobile);
                 proF.updateCountry(countryValue);
                 proF.setEmail(Email);
                 proF.setCommonInterests(One);
                 if(flag)
-                    a.get(acquaintanceType + countryType).add(proF);
+                    a.get(2*acquaintanceType + countryType).add(proF);
                 break;
             case 3: //ca
                 One = one.getText();
@@ -1035,7 +1083,7 @@ public class MUI extends javax.swing.JFrame {
                 if(flag)
                     ca = (CasualAcquaintances)factory.getAcquaintance(acquaintanceType);
                 else
-                    ca = (CasualAcquaintances)a.get(acquaintanceType + countryType).get(num);
+                    ca = (CasualAcquaintances)a.get(2*acquaintanceType + countryType).get(num);
                 ca.setName(Name);
                 ca.updateCountry(countryValue);
                 ca.setMobileNo(Mobile);
@@ -1044,7 +1092,7 @@ public class MUI extends javax.swing.JFrame {
                 ca.setCircumstances(Two);
                 ca.setOtherInfo(Three);
                 if(flag)
-                    a.get(acquaintanceType + countryType).add(ca);
+                    a.get(2*acquaintanceType + countryType).add(ca);
                 break;
             default:
                 break;
