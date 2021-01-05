@@ -13,17 +13,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Relatives extends Acquaintances implements Serializable {
-
+public abstract class Relatives extends Acquaintances implements Serializable {
     private String BDate;
     private String LDate;
     public static int numberRel = 0;
     private static Scanner reader = new Scanner(System.in);
-
-    Relatives() {
-        numberRel++;
-    }
-
+    public abstract void updateCountry(String country);
+    
     @Override
     public String getName() {
         return super.getName();
@@ -32,6 +28,16 @@ public class Relatives extends Acquaintances implements Serializable {
     @Override
     public void setName(String Name) {
         super.setName(Name);
+    }
+    
+    @Override
+    public String getCountry() {
+        return super.getCountry();
+    }
+    
+    @Override
+    public void setCountry(String country) {
+        super.setCountry(country);
     }
 
     @Override

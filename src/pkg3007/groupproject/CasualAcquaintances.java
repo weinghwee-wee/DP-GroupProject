@@ -12,16 +12,13 @@ package pkg3007.groupproject;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class CasualAcquaintances extends Acquaintances implements Serializable {
+public abstract class CasualAcquaintances extends Acquaintances implements Serializable {
 
     private String WhenWhere;
     private String Circumstances;
     private String OtherInfo;
     public static int numberCA = 0;
-
-    CasualAcquaintances() {
-        numberCA++;
-    }
+    public abstract void updateCountry(String country);
 
     @Override
     public String getName() {
@@ -33,6 +30,15 @@ public class CasualAcquaintances extends Acquaintances implements Serializable {
         super.setName(Name);
     }
 
+    @Override
+    public String getCountry() {
+        return super.getCountry();
+    }
+    @Override
+    public void setCountry(String country) {
+        super.setCountry(country);
+    }
+    
     @Override
     public String getMobileNo() {
         return super.getMobileNo();

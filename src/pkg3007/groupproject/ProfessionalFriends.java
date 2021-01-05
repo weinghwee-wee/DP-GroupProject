@@ -12,13 +12,10 @@ package pkg3007.groupproject;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class ProfessionalFriends extends Acquaintances implements Serializable{
+public abstract class ProfessionalFriends extends Acquaintances implements Serializable{
     private String CommonInterests;
     public static int numberProF = 0;
-
-    ProfessionalFriends(){
-        numberProF++;
-    }
+    public abstract void updateCountry(String country);
 
     @Override
     public String getName() {
@@ -28,6 +25,15 @@ public class ProfessionalFriends extends Acquaintances implements Serializable{
     @Override
     public void setName(String Name) {
         super.setName(Name);
+    }
+    
+    @Override
+    public String getCountry() {
+        return super.getCountry();
+    }
+    @Override
+    public void setCountry(String country) {
+        super.setCountry(country);
     }
     
     @Override

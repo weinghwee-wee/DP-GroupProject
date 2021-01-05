@@ -33,10 +33,13 @@ public class MUI extends javax.swing.JFrame {
     /**
      * Creates new form MUI
      */
+    private AbstractFactory factory;
+    private AcquaintancesFactoryProvider provider;
     private MUI mg;
     private AcquaintanceComponent a;
     private AcquaintanceComponent temp;
-    private int x;
+    private int acquaintanceType = -1;
+    private int countryType;
     private int num;
     private boolean flag;
     private boolean dflag;
@@ -97,11 +100,11 @@ public class MUI extends javax.swing.JFrame {
             op = "Edit";
         if(!flag){
             jButton10.setText("Save");
-            AcquaintanceComponent e = a.get(x).get(num);            
+            AcquaintanceComponent e = a.get(acquaintanceType + countryType).get(num);            
             name.setText(e.getName());
             mobile.setText(e.getMobileNo());
             email.setText(e.getEmail());
-            switch(x){
+            switch(acquaintanceType){
                 case 0:
                     PersonalFriends perF = (PersonalFriends)e;
                     one.setText(perF.getEvents());
@@ -133,7 +136,7 @@ public class MUI extends javax.swing.JFrame {
         jButton11.setVisible(true);
         if(flag)
             jButton10.setText("Add");
-        switch(x){
+        switch(acquaintanceType){
             case 0:
                 two.setVisible(true);
                 three.setVisible(true);
@@ -204,7 +207,7 @@ public class MUI extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         AcquaintanceComponent list;
         try{        
-            list = a.get(jList1.getSelectedIndex());
+            list = a.get(jList1.getSelectedIndex() + countryType);
         }
         catch(Exception e){
             return;
@@ -229,7 +232,9 @@ public class MUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        country = new javax.swing.JTextField();
+        provider = new AcquaintancesFactoryProvider();
+        jScrollPane7 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -238,6 +243,7 @@ public class MUI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
+        jList2 = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
         jLabel1 = new javax.swing.JLabel();
@@ -257,6 +263,7 @@ public class MUI extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -383,6 +390,27 @@ public class MUI extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
+        
+        jList2.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Oversea", "Local" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        
+        jList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList2ValueChanged(evt);
+            }
+        });
+        
+        country.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countryActionPerformed(evt);
+            }
+        });
+        
+        
+        jScrollPane7.setViewportView(jList2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -391,28 +419,6 @@ public class MUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27))
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -422,7 +428,32 @@ public class MUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton7))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)))
                 .addContainerGap())
         );
 
@@ -455,7 +486,10 @@ public class MUI extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -502,7 +536,7 @@ public class MUI extends javax.swing.JFrame {
         jLabel4.setText("Name:");
 
         jLabel5.setText("Mobile No:");
-
+        
         jLabel6.setText("Email:");
 
         jLabel7.setText("First meeting time & location:");
@@ -510,6 +544,8 @@ public class MUI extends javax.swing.JFrame {
         jLabel8.setText("First meeting CIrcumstances:");
 
         jLabel9.setText("Other useful information:");
+        
+        jLabel10.setText("Country:");
 
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -556,7 +592,8 @@ public class MUI extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -569,7 +606,8 @@ public class MUI extends javax.swing.JFrame {
                         .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                        .addGap(132, 132, 132)))
+                        .addGap(132, 132, 132))
+                    .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -587,6 +625,10 @@ public class MUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -616,13 +658,12 @@ public class MUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int index = jList1.getSelectedIndex();
-        if(index<0){
+        if(index<0 || jList2.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
         jPanel1.setVisible(false);
         jPanel3.setVisible(true);
-        x = index;
         flag = true;
         dflag = false;
         setDescription();
@@ -630,7 +671,7 @@ public class MUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int index = jList1.getSelectedIndex();
-        if(index<0){
+        if(index<0 || jList2.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -645,7 +686,7 @@ public class MUI extends javax.swing.JFrame {
             "Confirm",
             JOptionPane.YES_NO_OPTION);
         if(n==0){
-            a.get(index).remove(tindex);
+            a.get(index + countryType).remove(tindex);
             JOptionPane.showMessageDialog(mg, "Successfully Deleted");
             mg.setUpTableData();
         }
@@ -674,12 +715,13 @@ public class MUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        acquaintanceType = jList1.getSelectedIndex();
         setUpTableData();
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         int index = jList1.getSelectedIndex();
-        if(index<0){
+        if(index<0 || jList2.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -691,15 +733,19 @@ public class MUI extends javax.swing.JFrame {
         num = tindex;
         flag = false;
         dflag = false;
-        x = index;
+        acquaintanceType = index;
         setDescription();
         jPanel1.setVisible(false);
         jPanel3.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
+    private void countryActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+    }   
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         int index = jList1.getSelectedIndex();
-        if(index<0){
+        if(index<0 || jList2.getSelectedIndex() < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -710,12 +756,26 @@ public class MUI extends javax.swing.JFrame {
         }
         num = tindex;
         flag = false;
-        x = index;
+        acquaintanceType = index;
         jPanel1.setVisible(false);
         jPanel3.setVisible(true);
         dflag = true;
         setDescription();
     }//GEN-LAST:event_jButton6ActionPerformed
+    
+    private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {                                    
+        countryType = jList2.getSelectedIndex();
+        factory = provider.getAcquaintanceFactory(jList2.getSelectedIndex());
+        setUpTableData();
+        
+        if (countryType == 0) {
+            country.setText("");
+            country.setEditable(true);
+        } else {
+            country.setText("Malaysia");
+            country.setEditable(false);
+        }
+    }       
 
     public void runn(){
         String s = "<html> <b>Search results:</b><br>Found!<br><br>Acquaintance Details: <br>";
@@ -879,6 +939,7 @@ public class MUI extends javax.swing.JFrame {
 //    }
         
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        factory = provider.getAcquaintanceFactory(countryType);
         dflag = true;
         String Name = name.getText();
         if(Name.isEmpty()){
@@ -896,7 +957,14 @@ public class MUI extends javax.swing.JFrame {
             return;
         }
         String One,Two,Three;
-        switch(x){
+        String countryValue = country.getText();
+        
+        if(countryValue.isEmpty() || countryValue.length() > 300){
+            JOptionPane.showMessageDialog(mg, "Enter country");
+            return;
+        }
+        
+        switch(acquaintanceType){
             case 0: //perF
                 One = one.getText();
                 if(One.isEmpty() || One.length() > 300){
@@ -919,17 +987,18 @@ public class MUI extends javax.swing.JFrame {
                 }
                 PersonalFriends perF;
                 if(flag)
-                    perF = new PersonalFriends();
+                    perF = (PersonalFriends) factory.getAcquaintance(acquaintanceType);
                 else
-                    perF = (PersonalFriends)a.get(x).get(num);
+                    perF = (PersonalFriends)a.get(acquaintanceType + countryType).get(num);
                 perF.setName(Name);
+                perF.updateCountry(countryValue);
                 perF.setMobileNo(Mobile);
                 perF.setEmail(Email);
                 perF.setEvents(One);
                 perF.setAContext(Two);
                 perF.setADate(Three);
                 if(flag)
-                    a.get(x).add(perF);
+                    a.get(acquaintanceType + countryType).add(perF);
                     //this.a.get(x).add(perF);
                 break;
             case 1: //rel
@@ -953,16 +1022,17 @@ public class MUI extends javax.swing.JFrame {
                 }
                 Relatives rel;
                 if(flag)
-                    rel = new Relatives();
+                    rel = (Relatives)factory.getAcquaintance(acquaintanceType);
                 else
-                    rel = (Relatives)a.get(x).get(num);
+                    rel = (Relatives)a.get(acquaintanceType + countryType).get(num);
                 rel.setName(Name);
                 rel.setMobileNo(Mobile);
+                rel.updateCountry(countryValue);
                 rel.setEmail(Email);
                 rel.setBDate(One);
                 rel.setLDate(Two);
                 if(flag)
-                    a.get(x).add(rel);
+                    a.get(acquaintanceType + countryType).add(rel);
                 break;
             case 2: //proF
                 One = one.getText();
@@ -972,17 +1042,18 @@ public class MUI extends javax.swing.JFrame {
                 }
                 ProfessionalFriends proF;
                 if(flag)
-                    proF = new ProfessionalFriends();
+                    proF = (ProfessionalFriends)factory.getAcquaintance(acquaintanceType);
                 else
-                    proF = (ProfessionalFriends)a.get(x).get(num);
+                    proF = (ProfessionalFriends)a.get(acquaintanceType + countryType).get(num);
                 proF.setName(Name);
                 proF.setMobileNo(Mobile);
+                proF.updateCountry(countryValue);
                 proF.setEmail(Email);
                 proF.setCommonInterests(One);
                 if(flag)
-                    a.get(x).add(proF);
+                    a.get(acquaintanceType + countryType).add(proF);
                 break;
-                case 3: //ca
+            case 3: //ca
                 One = one.getText();
                 if(One.isEmpty() || One.length() > 300){
                     JOptionPane.showMessageDialog(mg, "Enter a valid value ( 1 to 300 chars)");
@@ -1000,17 +1071,18 @@ public class MUI extends javax.swing.JFrame {
                 }
                 CasualAcquaintances ca;
                 if(flag)
-                    ca = new CasualAcquaintances();
+                    ca = (CasualAcquaintances)factory.getAcquaintance(acquaintanceType);
                 else
-                    ca = (CasualAcquaintances)a.get(x).get(num);
+                    ca = (CasualAcquaintances)a.get(acquaintanceType + countryType).get(num);
                 ca.setName(Name);
+                ca.updateCountry(countryValue);
                 ca.setMobileNo(Mobile);
                 ca.setEmail(Email);
                 ca.setWhenWhere(One);
                 ca.setCircumstances(Two);
                 ca.setOtherInfo(Three);
                 if(flag)
-                    a.get(x).add(ca);
+                    a.get(acquaintanceType + countryType).add(ca);
                 break;
             default:
                 break;
@@ -1083,7 +1155,9 @@ public class MUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JList jList1;
+    private javax.swing.JList jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1093,11 +1167,13 @@ public class MUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private org.jdesktop.swingx.JXTable jXTable1;
     private javax.swing.JTextField mobile;
     private javax.swing.JTextField name;
     private javax.swing.JTextArea one;
     private javax.swing.JTextArea three;
     private javax.swing.JTextArea two;
+    private javax.swing.JTextField country;
     // End of variables declaration//GEN-END:variables
 }

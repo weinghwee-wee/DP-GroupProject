@@ -16,18 +16,34 @@ public class ContactManagementSoftware implements Serializable{
     private static MUI mg;
 
     private static AcquaintanceComponent rootDir = new AcquaintanceList("");
-    private static AcquaintanceComponent perF1 = new AcquaintanceList("Personal Friends");
-    private static AcquaintanceComponent rel1 = new AcquaintanceList("Relatives");
-    private static AcquaintanceComponent proF1 = new AcquaintanceList("Professional Friends");
-    private static AcquaintanceComponent ca1 = new AcquaintanceList("Casual Friends");
+    
+    private static AcquaintanceComponent personalOversea = new AcquaintanceList("Personal Friends Oversea");
+    private static AcquaintanceComponent personalLocal = new AcquaintanceList("Personal Friends Local");
+    
+    private static AcquaintanceComponent relativeOversea = new AcquaintanceList("Relatives Oversea");
+    private static AcquaintanceComponent relativeLocal = new AcquaintanceList("Relatives Local");
+    
+    private static AcquaintanceComponent professionalOversea = new AcquaintanceList("Professional Friends Oversea");
+    private static AcquaintanceComponent professionalLocal = new AcquaintanceList("Professional Friends Local");
+    
+    private static AcquaintanceComponent casualOversea = new AcquaintanceList("Casual Friends Oversea");
+    private static AcquaintanceComponent casualLocal = new AcquaintanceList("Casual Friends Local");
 
     public static void main(String[] args) {
         mg = MUI.getMUI();
         mg.initMuiClass();
-        rootDir.add(perF1);
-        rootDir.add(rel1);
-        rootDir.add(proF1);
-        rootDir.add(ca1);
+        rootDir.add(personalOversea);
+        rootDir.add(personalLocal);
+        
+        rootDir.add(relativeOversea);
+        rootDir.add(relativeLocal);
+        
+        rootDir.add(professionalOversea);
+        rootDir.add(professionalLocal);
+        
+        rootDir.add(casualOversea);
+        rootDir.add(casualLocal);
+        
         mg.setMg(mg);
         mg.setA(rootDir);
         mg.setVisible(true);
