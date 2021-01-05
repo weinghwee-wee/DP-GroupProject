@@ -11,12 +11,7 @@ package pkg3007.groupproject;
  */
 
 public class MobileNoChecker extends Validator{
-//    public MobileNoChecker() {
-//        super(str);
-//    }
 
-    public MobileNoChecker() {}
-    
     @Override
     public boolean checkValid(String str) {
         int x;

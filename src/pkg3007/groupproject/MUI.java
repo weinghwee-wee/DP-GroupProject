@@ -45,8 +45,8 @@ public class MUI extends javax.swing.JFrame {
     private boolean dflag;
     private String op;
     private String str;
-    private validDate dateChecker = new validDate();
-    private MobileNoChecker mobileNoChecker = new MobileNoChecker();
+    private Validator dateChecker = new validDate();
+    private Validator mobileNoChecker = new MobileNoChecker();
 
     private volatile static MUI uniquedMUI;
     
@@ -912,32 +912,6 @@ public class MUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameActionPerformed
 
-//        public boolean MobileNoChecker(String str){
-//        int x;
-//        if(str.isEmpty() || str.length() < 6 || str.length() > 15)
-//            return false;
-//        for(int j = 0 ; j < str.length() ; j++)
-//        {
-//            x = (int)str.charAt(j);
-//            if( x < 48 || x > 57 )
-//            return false;
-//        }
-//        return true;
-//    }
-    
-//    public boolean validDate(String Date){
-//        String pattern = "[0-3][0-9]/[0-1][0-9]/[0-9]{4}";
-//        Pattern r = Pattern.compile(pattern);
-//        Matcher m = r.matcher(Date);
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//        if(!m.find()){
-//            JOptionPane.showMessageDialog(mg, "Enter a valid date");
-//            return false;
-//        }
-//        else
-//            return true;
-//    }
-        
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         factory = provider.getAcquaintanceFactory(countryType);
         dflag = true;
@@ -981,10 +955,6 @@ public class MUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(mg, "Enter a valid date");
                     return;
                 }
-                if(Three.isEmpty() || Three.length() > 300){
-                    JOptionPane.showMessageDialog(mg, "Enter a valid value ( 1 to 300 chars)");
-                    return;
-                }
                 PersonalFriends perF;
                 if(flag)
                     perF = (PersonalFriends) factory.getAcquaintance(acquaintanceType);
@@ -1003,19 +973,11 @@ public class MUI extends javax.swing.JFrame {
                 break;
             case 1: //rel
                 One = one.getText();
-                if(One.isEmpty() || One.length() > 300){
-                    JOptionPane.showMessageDialog(mg, "Enter a valid value ( 1 to 300 chars)");
-                    return;
-                }
                 if(!dateChecker.isValid(One)){
                     JOptionPane.showMessageDialog(mg, "Enter a valid date");
                     return;
                 }
                 Two = two.getText();
-                if(Two.isEmpty() || Two.length() > 300){
-                    JOptionPane.showMessageDialog(mg, "Enter a valid value ( 1 to 300 chars)");
-                    return;
-                }
                 if(!dateChecker.isValid(Two)){
                     JOptionPane.showMessageDialog(mg, "Enter a valid date");
                     return;

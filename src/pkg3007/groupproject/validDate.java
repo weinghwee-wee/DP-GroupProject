@@ -14,11 +14,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class validDate extends Validator{
-//    public validDate(String str) {
-//        super(str);
-//    }
-
-    public validDate() {}
 
     @Override
     public boolean checkValid(String str) {

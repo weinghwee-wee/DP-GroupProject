@@ -10,13 +10,8 @@ package pkg3007.groupproject;
  * @author WH
  */
 abstract class Validator {
-//    String str;
 
-//    public Validator(String str) {
-//        this.str = str;
-//    }
-
-    public boolean isValid(String str){
+    public final boolean isValid(String str){
         if(!checkNull(str)){
             return checkValid(str);
         } else{
