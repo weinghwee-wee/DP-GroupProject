@@ -9,18 +9,19 @@ package pkg3007.groupproject;
  *
  * @author WH
  */
-public class AcquaintancesFactory {
+public class AcquaintancesLocalFactory extends AbstractFactory {
 
+    @Override
     public Acquaintances getAcquaintance(int acquaintance){
         switch (acquaintance) {
             case 0:
-                return new PersonalFriends();
+                return new PersonalFriendsLocal();
             case 1:
-                return new Relatives();
+                return new RelativesLocal();
             case 2:
-                return new ProfessionalFriends();
+                return new ProfessionalFriendsLocal();
             default:
-                return new CasualAcquaintances();
+                return new CasualAcquaintancesLocal();
         }
     }
 }

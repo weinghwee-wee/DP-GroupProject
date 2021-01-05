@@ -12,8 +12,8 @@ package pkg3007.groupproject;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class Acquaintances extends AcquaintanceComponent implements Serializable {
-
+public abstract class Acquaintances extends AcquaintanceComponent implements Serializable {
+    private String country;
     private String Name;
     private String MobileNo;
     private String Email;
@@ -21,6 +21,14 @@ public class Acquaintances extends AcquaintanceComponent implements Serializable
 
     Acquaintances() {
         number++;
+    }
+    
+     public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getName() {
