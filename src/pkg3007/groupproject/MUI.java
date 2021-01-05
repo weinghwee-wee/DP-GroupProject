@@ -778,103 +778,119 @@ public class MUI extends javax.swing.JFrame {
     }       
 
     public void runn(){
+        AcquaintanceComponent acquaintance;
+        
         String s = "<html> <b>Search results:</b><br>Found!<br><br>Acquaintance Details: <br>";
         int j = 0;
-        for(int i = 0; i < a.get(0).size(); i++){
-            if(a.get(0).get(i).getName().matches(str)){
+        int k = 0;
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent perF = (PersonalFriends)a.get(0).get(i);
+                acquaintance = (PersonalFriends)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>I. Personal Friends<br>");
+                    s = s.concat("<br>I. Personal Oversea Friends<br>");
                 }
-                s = s.concat(j + ". " + perF.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>"); 
             }
         }
+        
+        k++;
         j = 0;
-        for(int i = 0; i < a.get(1).size(); i++){
-            if(a.get(1).get(i).getName().matches(str)){
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent rel = (Relatives)a.get(1).get(i);
+                acquaintance = (PersonalFriends)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>II. Relatives<br>");
+                    s = s.concat("<br>II. Personal Local Friends<br>");
                 }
-                s = s.concat(j + ". " + rel.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>");
             }
         }
+        k++;
         j = 0;
-        for(int i = 0; i < a.get(2).size(); i++){
-            if(a.get(2).get(i).getName().matches(str)){
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent proF = (ProfessionalFriends)a.get(2).get(i);
+                acquaintance = (Relatives)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>III. Professional Friends<br>");
+                    s = s.concat("<br>III. Relatives Oversea<br>");
                 }
-                s = s.concat(j + ". " + proF.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>");
             }
         }
+        k++;
         j = 0;
-        for(int i = 0; i < a.get(3).size(); i++){
-            if(a.get(3).get(i).getName().matches(str)){
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                acquaintance = (Relatives)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                    s = s.concat("<br>IV. Relative Local<br>");
                 }
-                s = s.concat(j + ". " + ca.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>");
             }
         }
+        
+        k++;
         j = 0;
-        for(int i = 0; i < a.get(4).size(); i++){
-            if(a.get(3).get(i).getName().matches(str)){
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(4).get(i);
+                acquaintance = (ProfessionalFriends)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                    s = s.concat("<br>IV. Professinal Oversea Friends<br>");
                 }
-                s = s.concat(j + ". " + ca.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>");
             }
         }
+        
+        k++;
         j = 0;
-        for(int i = 0; i < a.get(5).size(); i++){
-            if(a.get(3).get(i).getName().matches(str)){
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(5).get(i);
+                acquaintance = (ProfessionalFriends)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                    s = s.concat("<br>IV. Professinal Local Friends<br>");
                 }
-                s = s.concat(j + ". " + ca.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>");
             }
         }
+        
+        k++;
         j = 0;
-        for(int i = 0; i < a.get(6).size(); i++){
-            if(a.get(3).get(i).getName().matches(str)){
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(6).get(i);
+                acquaintance = (CasualAcquaintances)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                    s = s.concat("<br>IV. Casual Oversea Acquaintances<br>");
                 }
-                s = s.concat(j + ". " + ca.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>");
             }
         }
+        
+        k++;
         j = 0;
-        for(int i = 0; i < a.get(7).size(); i++){
-            if(a.get(3).get(i).getName().matches(str)){
+        for(int i = 0; i < a.get(k).size(); i++){
+            if(a.get(k).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(7).get(i);
+                acquaintance = (CasualAcquaintances)a.get(k).get(i);
                 if(j==1){
-                    s = s.concat("<br>IV. Casual Acquaintances<br>");
+                    s = s.concat("<br>IV. Casual Local Acquaintances<br>");
                 }
-                s = s.concat(j + ". " + ca.print());
+                s = s.concat(j + ". " + acquaintance.print());
                 s = s.concat("<br>");
             }
         }
+        
         if(s.matches("<html> <b>Search results:</b><br>Found!<br><br>Acquaintance Details: <br>")){
             s  = "<html>No result found</html>";
         }
