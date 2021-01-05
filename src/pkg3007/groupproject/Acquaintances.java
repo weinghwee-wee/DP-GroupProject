@@ -46,25 +46,10 @@ public class Acquaintances extends AcquaintanceComponent implements Serializable
     }
 
     public void setMobileNo(String MobileNo) {
-        Scanner reader = new Scanner(System.in);
-        Validator v = new MobileNoChecker(MobileNo);
-
-        if (v.isValid() && MobileNo.length() >= 6
-                && MobileNo.length() <= 15) {
-            this.MobileNo = MobileNo;
-        } else {
-            System.out.print("Enter a valid Mobile No of length between 6 and 15 (inclusive): ");
-            setMobileNo(reader.next());
-        }
+        this.MobileNo = MobileNo;
     }
 
     public void setEmail(String Email) {
-        Scanner reader = new Scanner(System.in);
-        if (Email.contains("@")) {
-            this.Email = Email;
-        } else {
-            System.out.print("Enter a valid Email: ");
-            this.setEmail(reader.next());
-        }
+        this.Email = Email;
     }
 }

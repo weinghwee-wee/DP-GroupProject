@@ -42,7 +42,9 @@ public class MUI extends javax.swing.JFrame {
     private boolean dflag;
     private String op;
     private String str;
-    
+    private validDate dateChecker = new validDate();
+    private MobileNoChecker mobileNoChecker = new MobileNoChecker();
+
     private volatile static MUI uniquedMUI;
     
     private MUI() {}
@@ -863,31 +865,31 @@ public class MUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameActionPerformed
 
-        public boolean MobileNoChecker(String str){
-        int x;
-        if(str.isEmpty() || str.length() < 6 || str.length() > 15)
-            return false;
-        for(int j = 0 ; j < str.length() ; j++)
-        {
-            x = (int)str.charAt(j);
-            if( x < 48 || x > 57 )
-            return false;    
-        }
-        return true;
-    }
+//        public boolean MobileNoChecker(String str){
+//        int x;
+//        if(str.isEmpty() || str.length() < 6 || str.length() > 15)
+//            return false;
+//        for(int j = 0 ; j < str.length() ; j++)
+//        {
+//            x = (int)str.charAt(j);
+//            if( x < 48 || x > 57 )
+//            return false;
+//        }
+//        return true;
+//    }
     
-    public boolean validDate(String Date){
-        String pattern = "[0-3][0-9]/[0-1][0-9]/[0-9]{4}";
-        Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(Date);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        if(!m.find()){
-            JOptionPane.showMessageDialog(mg, "Enter a valid date");
-            return false;
-        }
-        else
-            return true;
-    }
+//    public boolean validDate(String Date){
+//        String pattern = "[0-3][0-9]/[0-1][0-9]/[0-9]{4}";
+//        Pattern r = Pattern.compile(pattern);
+//        Matcher m = r.matcher(Date);
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//        if(!m.find()){
+//            JOptionPane.showMessageDialog(mg, "Enter a valid date");
+//            return false;
+//        }
+//        else
+//            return true;
+//    }
         
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         dflag = true;
@@ -897,7 +899,7 @@ public class MUI extends javax.swing.JFrame {
             return;
         }
         String Mobile = mobile.getText();
-        if(!MobileNoChecker(Mobile)){
+        if(!mobileNoChecker.isValid(Mobile)){
             JOptionPane.showMessageDialog(mg, "Enter a valid mobile number (6-15 digits)");
             return;
         }
@@ -920,7 +922,8 @@ public class MUI extends javax.swing.JFrame {
                     return;
                 }
                 Three = three.getText();
-                if(!validDate(Three)){
+                if(!dateChecker.isValid(Three)){
+                    JOptionPane.showMessageDialog(mg, "Enter a valid date");
                     return;
                 }
                 if(Three.isEmpty() || Three.length() > 300){
@@ -948,7 +951,8 @@ public class MUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(mg, "Enter a valid value ( 1 to 300 chars)");
                     return;
                 }
-                if(!validDate(One)){
+                if(!dateChecker.isValid(One)){
+                    JOptionPane.showMessageDialog(mg, "Enter a valid date");
                     return;
                 }
                 Two = two.getText();
@@ -956,7 +960,8 @@ public class MUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(mg, "Enter a valid value ( 1 to 300 chars)");
                     return;
                 }
-                if(!validDate(Two)){
+                if(!dateChecker.isValid(Two)){
+                    JOptionPane.showMessageDialog(mg, "Enter a valid date");
                     return;
                 }
                 Relatives rel;

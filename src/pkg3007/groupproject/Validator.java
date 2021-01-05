@@ -10,23 +10,23 @@ package pkg3007.groupproject;
  * @author WH
  */
 abstract class Validator {
-    String str;
+//    String str;
 
-    public Validator(String str) {
-        this.str = str;
-    }
+//    public Validator(String str) {
+//        this.str = str;
+//    }
 
-    public boolean isValid(){
-        if(!checkNull()){
-            return checkValid();
+    public boolean isValid(String str){
+        if(!checkNull(str)){
+            return checkValid(str);
         } else{
             return false;
         }
     }
 
-    public boolean checkNull(){
+    public boolean checkNull(String str){
         return str.equalsIgnoreCase("");
     }
 
-    public abstract boolean checkValid();
+    public abstract boolean checkValid(String str);
 }

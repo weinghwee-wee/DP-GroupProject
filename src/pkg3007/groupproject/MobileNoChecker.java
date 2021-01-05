@@ -11,12 +11,14 @@ package pkg3007.groupproject;
  */
 
 public class MobileNoChecker extends Validator{
-    public MobileNoChecker(String str) {
-        super(str);
-    }
+//    public MobileNoChecker() {
+//        super(str);
+//    }
+
+    public MobileNoChecker() {}
     
     @Override
-    public boolean checkValid() {
+    public boolean checkValid(String str) {
         int x;
         
         if(str.length() < 6 || str.length() > 15)
