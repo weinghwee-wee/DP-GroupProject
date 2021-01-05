@@ -64,4 +64,12 @@ public class ProfessionalFriends extends Acquaintances implements Serializable{
             setCommonInterests(reader.nextLine());
         }
     }
+    
+    public String print(){
+        String s = "";
+        s = s.concat(super.print());
+        s = s.concat("Common Interests: " + getCommonInterests() + "<br>");
+
+        return s;
+    }
 }

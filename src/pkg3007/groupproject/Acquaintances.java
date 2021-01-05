@@ -52,4 +52,13 @@ public class Acquaintances extends AcquaintanceComponent implements Serializable
     public void setEmail(String Email) {
         this.Email = Email;
     }
+    
+    public String print(){
+        String s = "";
+        s = s.concat("Name: " + getName() + "<br>");
+        s = s.concat("Mobile No: " + getMobileNo() + "<br>");
+        s = s.concat("Email: " + getEmail() + "<br>");
+        
+        return s;
+    }
 }

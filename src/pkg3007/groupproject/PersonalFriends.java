@@ -91,4 +91,14 @@ public class PersonalFriends extends Acquaintances implements Serializable {
             setEvents(reader.nextLine());
         }
     }
+    
+    public String print(){
+        String s = "";
+        s = s.concat(super.print());
+        s = s.concat("Specific events: " + getEvents() + "<br>");
+        s = s.concat("First Acquaintance context: " + getAContext() + "<br>");
+        s = s.concat("First Acquaintance date: " + getADate() + "<br>");
+
+        return s;
+    }
 }
