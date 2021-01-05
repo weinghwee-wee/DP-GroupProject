@@ -831,7 +831,7 @@ public class MUI extends javax.swing.JFrame {
         for(int i = 0; i < a.get(4).size(); i++){
             if(a.get(3).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(4).get(i);
                 if(j==1){
                     s = s.concat("<br>IV. Casual Acquaintances<br>");
                 }
@@ -843,7 +843,7 @@ public class MUI extends javax.swing.JFrame {
         for(int i = 0; i < a.get(5).size(); i++){
             if(a.get(3).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(5).get(i);
                 if(j==1){
                     s = s.concat("<br>IV. Casual Acquaintances<br>");
                 }
@@ -855,7 +855,7 @@ public class MUI extends javax.swing.JFrame {
         for(int i = 0; i < a.get(6).size(); i++){
             if(a.get(3).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(6).get(i);
                 if(j==1){
                     s = s.concat("<br>IV. Casual Acquaintances<br>");
                 }
@@ -867,7 +867,7 @@ public class MUI extends javax.swing.JFrame {
         for(int i = 0; i < a.get(7).size(); i++){
             if(a.get(3).get(i).getName().matches(str)){
                 j++;
-                AcquaintanceComponent ca = (CasualAcquaintances)a.get(3).get(i);
+                AcquaintanceComponent ca = (CasualAcquaintances)a.get(7).get(i);
                 if(j==1){
                     s = s.concat("<br>IV. Casual Acquaintances<br>");
                 }
