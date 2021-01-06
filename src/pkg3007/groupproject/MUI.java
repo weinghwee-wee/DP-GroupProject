@@ -39,10 +39,10 @@ public class MUI extends javax.swing.JFrame {
     private AcquaintanceComponent a;
     private AcquaintanceComponent temp;
     private int acquaintanceType = -1;
-    private int countryType;
+    private int countryType = -1;
     private int num;
     private boolean flag;
-    private boolean dflag;
+    private boolean inputFieldEditable;
     private String op;
     private String str;
     private Validator dateChecker = new validDate();
@@ -86,20 +86,28 @@ public class MUI extends javax.swing.JFrame {
         one.setText("");
         two.setText("");
         three.setText("");
-        if(!dflag){
-            name.setEditable(true);
-            mobile.setEditable(true);
-            email.setEditable(true);
-            one.setEditable(true);
-            two.setEditable(true);
-            three.setEditable(true);
-            country.setEditable(true);
-        }
-        if(flag)
+        country.setText("");
+        
+        saveButton.setVisible(true);
+        cancelButton.setVisible(true);
+        
+        name.setEditable(!inputFieldEditable);
+        mobile.setEditable(!inputFieldEditable);
+        email.setEditable(!inputFieldEditable);
+        one.setEditable(!inputFieldEditable);
+        two.setEditable(!inputFieldEditable);
+        three.setEditable(!inputFieldEditable);
+        country.setEditable(!inputFieldEditable && countryType == 0);
+
+        if (countryType == 1) {
+            country.setText("Malaysia");
+        }    
+        
+        if(flag) {
             op = "Add";
-        else
+            saveButton.setText("Add");
+        } else {
             op = "Edit";
-        if(!flag){
             saveButton.setText("Save");
             AcquaintanceComponent e = a.get(2*acquaintanceType + countryType).get(num);            
             name.setText(e.getName());
@@ -134,10 +142,7 @@ public class MUI extends javax.swing.JFrame {
                     break;
             }
         }
-        saveButton.setVisible(true);
-        cancelButton.setVisible(true);
-        if(flag)
-            saveButton.setText("Add");
+        
         switch(acquaintanceType){
             case 0:
                 two.setVisible(true);
@@ -191,14 +196,8 @@ public class MUI extends javax.swing.JFrame {
             default:
                 break;
         }
-        if(dflag){
-            name.setEditable(false);
-            mobile.setEditable(false);
-            email.setEditable(false);
-            one.setEditable(false);
-            two.setEditable(false);
-            three.setEditable(false);
-            country.setEditable(false);
+        
+         if(inputFieldEditable){
             saveButton.setText("Back to main menu");
             cancelButton.setVisible(false);
             jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Display Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16)));
@@ -235,6 +234,7 @@ public class MUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        //**********************instantiation**********************************
         country = new javax.swing.JTextField();
         provider = new AcquaintancesFactoryProvider();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -278,36 +278,58 @@ public class MUI extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         one = new javax.swing.JTextArea();
         cancelButton = new javax.swing.JButton();
-
+        
+        //**********************set text**********************************
+        nameLabel.setText("Name:");
+        mobileNoLabel.setText("Mobile No:");
+        emailLabel.setText("Email:");
+        meetingLocationLabel.setText("First meeting time & location:");
+        meetingCircumstancesLabel.setText("First meeting CIrcumstances:");
+        otherInfo.setText("Other useful information:");
+        countryLabel.setText("Country:");
+        systemTitleLabel.setText("<html><u>Contact Management System</u></html>");
+        addButton.setText("Add");
+        deleteButton.setText("Delete");
+        searchButton.setText("Search");
+        searchexitexitButton.setText("Exit");
+        detailsLabel.setText("Details:");
+        editButton.setText("Edit");
+        selectCategoryLabel.setText("Select Category:");
+        viewFullDetails.setText("View full detail");
+        readFileButton.setText("Read from file");
+        saveFileButton.setText("Save as file");
+        saveButton.setText("Add");
+        cancelButton.setText("Cancel");
+        
+        //*****************set font*******************************************
+        systemTitleLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 20)); // NOI18N
+        selectCategoryLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
+        detailsLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
+         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        systemTitleLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 20)); // NOI18N
+        
         systemTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        systemTitleLabel.setText("<html><u>Contact Management System</u></html>");
-
-        addButton.setText("Add");
+        
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("Delete");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
             }
         });
 
-        searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        searchexitexitButton.setText("Exit");
         searchexitexitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -359,35 +381,25 @@ public class MUI extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jXTable1);
-
-        selectCategoryLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
-        selectCategoryLabel.setText("Select Category:");
-
-        detailsLabel.setFont(new java.awt.Font("Ubuntu Medium", 0, 17)); // NOI18N
-        detailsLabel.setText("Details:");
-
-        editButton.setText("Edit");
+        
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        viewFullDetails.setText("View full detail");
         viewFullDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
 
-        readFileButton.setText("Read from file");
         readFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 readFileButtonActionPerformed(evt);
             }
         });
 
-        saveFileButton.setText("Save as file");
         saveFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveFileButtonActionPerformed(evt);
@@ -405,13 +417,6 @@ public class MUI extends javax.swing.JFrame {
                 jList2ValueChanged(evt);
             }
         });
-        
-        country.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                countryActionPerformed(evt);
-            }
-        });
-        
         
         jScrollPane7.setViewportView(countryTypeList);
 
@@ -536,20 +541,6 @@ public class MUI extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Casual Acquaintance Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16))); // NOI18N
 
-        nameLabel.setText("Name:");
-
-        mobileNoLabel.setText("Mobile No:");
-        
-        emailLabel.setText("Email:");
-
-        meetingLocationLabel.setText("First meeting time & location:");
-
-        meetingCircumstancesLabel.setText("First meeting CIrcumstances:");
-
-        otherInfo.setText("Other useful information:");
-        
-        countryLabel.setText("Country:");
-
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameActionPerformed(evt);
@@ -565,7 +556,7 @@ public class MUI extends javax.swing.JFrame {
         three.setRows(5);
         jScrollPane5.setViewportView(three);
 
-        saveButton.setText("Add");
+        
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -575,8 +566,7 @@ public class MUI extends javax.swing.JFrame {
         one.setColumns(20);
         one.setRows(5);
         jScrollPane6.setViewportView(one);
-
-        cancelButton.setText("Cancel");
+        
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
@@ -660,24 +650,23 @@ public class MUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int index = acquantanceTypeList.getSelectedIndex();
-        if(index<0 || countryTypeList.getSelectedIndex() < 0){
+        if(acquaintanceType <0 || countryType < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
         jPanel1.setVisible(false);
         jPanel3.setVisible(true);
         flag = true;
-        dflag = false;
+        inputFieldEditable = false;
         setDescription();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        int index = acquantanceTypeList.getSelectedIndex();
-        if(index<0 || countryTypeList.getSelectedIndex() < 0){
+        if(acquaintanceType <0 || countryType < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
+        
         int tindex = jXTable1.getSelectedRow();
         if(tindex < 0){
             JOptionPane.showMessageDialog(mg, "Select an entry!");
@@ -723,11 +712,11 @@ public class MUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int index = acquantanceTypeList.getSelectedIndex();
-        if(index<0 || countryTypeList.getSelectedIndex() < 0){
+        if(acquaintanceType <0 || countryType < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
+        
         int tindex = jXTable1.getSelectedRow();
         if(tindex < 0){
             JOptionPane.showMessageDialog(mg, "Select an entry!");
@@ -735,20 +724,14 @@ public class MUI extends javax.swing.JFrame {
         }
         num = tindex;
         flag = false;
-        dflag = false;
-        acquaintanceType = index;
+        inputFieldEditable = false;
         setDescription();
         jPanel1.setVisible(false);
         jPanel3.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
     
-    private void countryActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-    }   
-    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        int index = acquantanceTypeList.getSelectedIndex();
-        if(index<0 || countryTypeList.getSelectedIndex() < 0){
+        if(acquaintanceType <0 || countryType < 0){
             JOptionPane.showMessageDialog(mg, "Select a category!");
             return;
         }
@@ -759,10 +742,9 @@ public class MUI extends javax.swing.JFrame {
         }
         num = tindex;
         flag = false;
-        acquaintanceType = index;
         jPanel1.setVisible(false);
         jPanel3.setVisible(true);
-        dflag = true;
+        inputFieldEditable = true;
         setDescription();
     }//GEN-LAST:event_jButton6ActionPerformed
     
@@ -770,14 +752,6 @@ public class MUI extends javax.swing.JFrame {
         countryType = countryTypeList.getSelectedIndex();
         factory = provider.getAcquaintanceFactory(countryTypeList.getSelectedIndex());
         setUpTableData();
-        
-        if (countryType == 0) {
-            country.setText("");
-            country.setEditable(true);
-        } else {
-            country.setText("Malaysia");
-            country.setEditable(false);
-        }
     }       
 
     public void runn(){
@@ -982,7 +956,7 @@ public class MUI extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         factory = provider.getAcquaintanceFactory(countryType);
-        dflag = true;
+        inputFieldEditable = true;
         String Name = name.getText();
         if(Name.isEmpty()){
             JOptionPane.showMessageDialog(mg, "Enter a name");
