@@ -21,6 +21,10 @@ public abstract class AcquaintanceComponent implements Serializable{
         throw new UnsupportedOperationException();
     }
     
+    public String getCountry(){
+        throw new UnsupportedOperationException();
+    }
+    
     public String getName(){
         throw new UnsupportedOperationException();
     }

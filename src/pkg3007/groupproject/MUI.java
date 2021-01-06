@@ -93,6 +93,7 @@ public class MUI extends javax.swing.JFrame {
             one.setEditable(true);
             two.setEditable(true);
             three.setEditable(true);
+            country.setEditable(true);
         }
         if(flag)
             op = "Add";
@@ -104,6 +105,7 @@ public class MUI extends javax.swing.JFrame {
             name.setText(e.getName());
             mobile.setText(e.getMobileNo());
             email.setText(e.getEmail());
+            country.setText(e.getCountry());
             switch(acquaintanceType){
                 case 0:
                     PersonalFriends perF = (PersonalFriends)e;
@@ -196,6 +198,7 @@ public class MUI extends javax.swing.JFrame {
             one.setEditable(false);
             two.setEditable(false);
             three.setEditable(false);
+            country.setEditable(false);
             saveButton.setText("Back to main menu");
             cancelButton.setVisible(false);
             jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Display Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DialogInput", 1, 16)));
