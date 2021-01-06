@@ -66,6 +66,7 @@ public abstract class Acquaintances extends AcquaintanceComponent implements Ser
         s = s.concat("Name: " + getName() + "<br>");
         s = s.concat("Mobile No: " + getMobileNo() + "<br>");
         s = s.concat("Email: " + getEmail() + "<br>");
+        s = s.concat("Country: " + getCountry() + "<br>");
         
         return s;
     }

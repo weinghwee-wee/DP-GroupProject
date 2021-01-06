@@ -74,8 +74,17 @@ public abstract class ProfessionalFriends extends Acquaintances implements Seria
     public String print(){
         String s = "";
         s = s.concat(super.print());
-        s = s.concat("Common Interests: " + getCommonInterests() + "<br>");
+        s = s.concat("Common Interests: " + getCommonInterests() + "<br><br>");
 
+        return s;
+    }
+    
+    public String match(String str){
+        String s = "";
+        if (getName().matches(str)){
+            s = s.concat(print());
+        }
+        
         return s;
     }
 }

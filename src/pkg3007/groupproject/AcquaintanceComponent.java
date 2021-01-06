@@ -57,4 +57,8 @@ public abstract class AcquaintanceComponent implements Serializable{
         throw new UnsupportedOperationException();
     }
     
+    public String match(String str){
+        throw new UnsupportedOperationException();
+    }
+    
 }
