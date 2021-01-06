@@ -10,22 +10,25 @@ package pkg3007.groupproject;
  * @author WH
  */
 import java.text.SimpleDateFormat;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.text.ParseException;
 
 public class validDate extends Validator{
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public boolean checkValid(String str) {
-        String pattern = "[0-3][0-9]/[0-1][0-9]/[0-9]{4}";
-        Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(str);
-        SimpleDateFormat sdf = new
-        SimpleDateFormat("dd/MM/yyyy");
-        
-        if(!m.find()){
-            return false;
-        }else
-            return true;
+        boolean valid = false;
+
+        try {
+            sdf.parse(str);
+            sdf.setLenient(false);
+            valid = true;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            valid = false;
+        }
+
+        return valid;
     }
 }
