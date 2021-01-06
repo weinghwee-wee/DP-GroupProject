@@ -10,9 +10,11 @@ package pkg3007.groupproject;
  * @author WH
  */
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public abstract class Acquaintances extends AcquaintanceComponent implements Serializable {
+
     private String country;
     private String Name;
     private String MobileNo;
@@ -22,8 +24,8 @@ public abstract class Acquaintances extends AcquaintanceComponent implements Ser
     Acquaintances() {
         number++;
     }
-    
-     public String getCountry() {
+
+    public String getCountry() {
         return country;
     }
 
@@ -60,8 +62,8 @@ public abstract class Acquaintances extends AcquaintanceComponent implements Ser
     public void setEmail(String Email) {
         this.Email = Email;
     }
-    
-    public String print(){
+
+    public String print() {
         String s = "";
         s = s.concat("Name: " + getName() + "<br>");
         s = s.concat("Mobile No: " + getMobileNo() + "<br>");
@@ -69,5 +71,22 @@ public abstract class Acquaintances extends AcquaintanceComponent implements Ser
         s = s.concat("Country: " + getCountry() + "<br>");
         
         return s;
+    }
+
+    public Iterator<AcquaintanceComponent> createIterator() {
+        return new NullIterator();
+    }
+}
+
+class NullIterator implements Iterator<AcquaintanceComponent> {
+
+    @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    @Override
+    public AcquaintanceComponent next() {
+        return null;
     }
 }

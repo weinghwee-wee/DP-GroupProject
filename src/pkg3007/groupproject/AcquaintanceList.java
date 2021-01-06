@@ -45,25 +45,29 @@ public class AcquaintanceList extends AcquaintanceComponent implements Serializa
     public String print() {
         String s = "";
         s.concat(getName() + "<br>");
-
+        System.out.println("AcList " + s);
         return s;
     }
-    
-    public String match(String str){
+
+    public String match(String str) {
         int anyMatch = 0;
         String s = "";
 
         Iterator<AcquaintanceComponent> iterator = acquaintances.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             AcquaintanceComponent component = iterator.next();
-            if (component.match(str) != "" && anyMatch == 0){
+            if (component.match(str) != "" && anyMatch == 0) {
                 s = s.concat(getName() + "<br>");
                 anyMatch = 1;
             }
             s = s.concat(component.match(str));
         }
-        
+
         return s;
+    }
+
+    public Iterator<AcquaintanceComponent> createIterator() {
+        return new AcquaintanceIterator(acquaintances.iterator());
     }
 
 }

@@ -757,8 +757,9 @@ public class MUI extends javax.swing.JFrame {
     public void runn(){        
         String s = "<html> <b>Search results:</b><br>Found!<br><br>Acquaintance Details: <br>";
         
-        s = s.concat(a.match(str));
-        
+//        s = s.concat(a.match(str));
+        AcquaintanceNode ac = new AcquaintanceNode(a);
+        s = s.concat(ac.printSearchedAcquaintance(str));
         if(s.matches("<html> <b>Search results:</b><br>Found!<br><br>Acquaintance Details: <br>")){
             s  = "<html>No result found</html>";
         }
